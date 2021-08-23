@@ -3,16 +3,16 @@
 
 #include <string>
 
-class Zombie
-{
-	std::string name;
+class Zombie {
 
-public:
+  public:
+	std::string name;
+	Zombie();
 	Zombie(std::string name);
 	void announce();
 	~Zombie();
 };
 
-Zombie *newZombie(std::string name);
+Zombie* newZombie(std::string name);
 
 #endif

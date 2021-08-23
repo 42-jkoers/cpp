@@ -1,14 +1,12 @@
 #include <iostream>
-#include <string>
 #include <sstream>
+#include <string>
 
 #define N_CONTACTS 8
 #define TAB_WIDTH 10
 
-class Contact
-{
-	void column(std::string str)
-	{
+class Contact {
+	void column(std::string str) {
 		const size_t len = str.length();
 
 		for (size_t i = len; i < TAB_WIDTH; i++)
@@ -20,8 +18,8 @@ class Contact
 		std::cout << "|";
 	}
 
-public:
-	bool assigned;
+  public:
+	bool   assigned;
 	size_t i;
 
 	std::string firstName;
@@ -30,8 +28,7 @@ public:
 	std::string phoneNumber;
 	std::string darkestSecret;
 
-	void printColumn()
-	{
+	void printColumn() {
 		if (!assigned)
 			return;
 		std::cout << "|         " << i << "|";
@@ -41,8 +38,7 @@ public:
 		std::cout << "|" << std::endl;
 	}
 
-	void printInfo()
-	{
+	void printInfo() {
 		std::cout << "    firstName: " << firstName << "\n";
 		std::cout << "     lastName: " << lastName << "\n";
 		std::cout << "     nickName: " << nickName << "\n";
@@ -50,8 +46,7 @@ public:
 		std::cout << "darkestSecret: " << darkestSecret << std::endl;
 	}
 
-	void assign(size_t index)
-	{
+	void assign(size_t index) {
 		std::cout << "    firstName: ";
 		std::getline(std::cin, firstName);
 		std::cout << "     lastName: ";
@@ -67,29 +62,24 @@ public:
 	}
 };
 
-int main()
-{
-	size_t i = 0;
-	Contact contacts[N_CONTACTS];
+int main() {
+	size_t		i = 0;
+	Contact		contacts[N_CONTACTS];
 	std::string input;
 
 	for (size_t i = 0; i < N_CONTACTS; i++)
 		contacts[i].assigned = false;
-	while (true)
-	{
+	while (true) {
 		std::cout << "$> ";
 		std::getline(std::cin, input);
 		if (input == "EXIT")
 			break;
-		else if (input == "ADD")
-		{
+		else if (input == "ADD") {
 			contacts[i].assign(i);
 			i++;
 			if (i == N_CONTACTS)
 				i = 0;
-		}
-		else if (input == "SEARCH")
-		{
+		} else if (input == "SEARCH") {
 			for (size_t i = 0; i < N_CONTACTS; i++)
 				contacts[i].printColumn();
 			size_t i;
