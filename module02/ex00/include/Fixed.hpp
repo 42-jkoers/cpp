@@ -4,21 +4,20 @@
 #include <iostream>
 #include <string>
 
-class Fixed
-{
+class Fixed {
 
-public:
+  public:
 	Fixed(int n);
 	Fixed(void);
-	Fixed(Fixed const &cp);
+	Fixed(const Fixed& cp);
 	~Fixed(void);
-	Fixed &operator=(Fixed const &cp);
+	Fixed& operator=(const Fixed& cp);
 
-	int getRawBits(void) const;
+	int	 getRawBits(void) const;
 	void setRawBits(int const raw);
 
-private:
-	int value;
+  private:
+	int				 value;
 	const static int fractionalBits = 8;
 };
 
