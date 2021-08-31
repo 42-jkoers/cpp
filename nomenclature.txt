@@ -1,0 +1,23 @@
+Operator overload
+	Operators have different implementations depending on their arguments
+
+Reference
+	An alias, that is, another name for an already existing variable. Once a reference is initialized with a variable, either the variable name or the reference name may be used to refer to the variable.
+
+Member function
+	Function inside class
+
+Ad hoc polymorphism
+	eg. A function that takes multiple defined different types of arguments
+
+Parametric polymorphism
+	eg. Function without a type
+
+Orthodox canonical classes form (OCCF)
+	a class with:	Default constructor
+					Copy constructor
+					Destructor
+					Copy assignment operator
+
+Fixed point numbers
+	A number in memory where the decimal bits always start at the same point in memory
