@@ -1,16 +1,13 @@
-#ifndef SCAVTRAP_H
-#define SCAVTRAP_H
+#pragma once
+
 #include "ClapTrap.hpp"
 
 class ScavTrap : protected ClapTrap {
   public:
-	// ScavTrap();
-	// ScavTrap(const ScavTrap& cp);
-	// ~ScavTrap();
-	// ScavTrap& operator=(const ScavTrap& cp);
-	void guardGate();
-
-  private:
+	ScavTrap();
+	ScavTrap(const std::string name);
+	ScavTrap(const ScavTrap& cp);
+	~ScavTrap();
+	ScavTrap& operator=(const ScavTrap& cp);
+	void	  guardGate();
 };
-
-#endif

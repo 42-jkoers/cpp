@@ -5,14 +5,15 @@
 #include <cstdlib>
 #include <iostream>
 
-#define HITPOINTS 100
-#define ENERGYPOINTS 50
-#define ATTACKDAMAGE 20
+#define HITPOINTS 10
+#define ENERGYPOINTS 10
+#define ATTACKDAMAGE 0
 
 class ClapTrap {
   public:
 	ClapTrap();
 	ClapTrap(std::string name);
+	ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackDamage);
 	ClapTrap(const ClapTrap& src);
 	~ClapTrap();
 	ClapTrap& operator=(const ClapTrap& cp);
@@ -26,6 +27,10 @@ class ClapTrap {
 	unsigned int hitPoints;
 	unsigned int energyPoints;
 	unsigned int attackDamage;
+
+	unsigned int initalHitPoints;
+	unsigned int initialEnergyPoints;
+	unsigned int initialAttackDamage;
 };
 
 #endif
