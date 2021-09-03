@@ -8,7 +8,9 @@ ScavTrap::ScavTrap(const ScavTrap& cp) {
 	*this = cp;
 }
 
-ScavTrap::~ScavTrap() {}
+ScavTrap::~ScavTrap() {
+	std::cout << "Scavtrap " << name << " was reduced to atoms" << std::endl;
+}
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& cp) {
 	hitPoints = cp.hitPoints;

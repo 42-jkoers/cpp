@@ -2,7 +2,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : protected ClapTrap {
+class ScavTrap : public ClapTrap {
   public:
 	ScavTrap();
 	ScavTrap(const std::string name);
