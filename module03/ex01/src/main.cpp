@@ -5,8 +5,8 @@ int main() {
 	ScavTrap s1("Greg");
 	ScavTrap s2 = s;
 
-	s.guardGate();
 	s.takeDamage(42);
+	s.guardGate();
 
 	return 0;
 }
