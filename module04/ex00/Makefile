@@ -18,6 +18,7 @@ LINK			=
 
 OBJ_IN_DIR 		= $(BUILDDIR)/*.$(OBJEXT)
 SRC 			= $(shell find $(SRCDIR) -name *.$(SRCEXT))
+HEADERS 		= $(shell find $(HEADERDIR) -name *.$(HEADEREXT))
 OBJ				= $(foreach src,$(SRC),$(BUILDDIR)/$(notdir $(src:.$(SRCEXT)=.$(OBJEXT))))
 
 SILECE_MAKE 	= | grep -v -E ".*Leaving directory|.*Entering directory"
@@ -26,10 +27,10 @@ VPATH 			= $(shell find $(SRCDIR) -type d | tr '\n' ':' | sed -E 's/(.*):/\1/')
 
 all: $(NAME)
 
-$(NAME): $(BUILDDIR)/ $(OBJ) $(HEADERDIR)
+$(NAME): $(BUILDDIR)/ $(OBJ) $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ_IN_DIR) $(LIBS) -o $(NAME) $(LINK)
 
-$(BUILDDIR)/%.$(OBJEXT): %.$(SRCEXT) $(HEADERDIR)
+$(BUILDDIR)/%.$(OBJEXT): %.$(SRCEXT) $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $(BUILDDIR)/$(notdir $@)
 # sources
 
