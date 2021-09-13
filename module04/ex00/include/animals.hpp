@@ -8,7 +8,7 @@ class Animal {
 	Animal(std::string type);
 	Animal(const Animal& cp);
 	Animal& operator=(const Animal& cp);
-	~Animal();
+	virtual ~Animal();
 	virtual void makeSound() const;
 
   protected:
@@ -20,7 +20,7 @@ class Dog : public Animal {
 	Dog();
 	Dog(const Dog& cp);
 	Dog& operator=(const Dog& cp);
-	~Dog();
+	virtual ~Dog();
 	void makeSound() const;
 };
 
@@ -29,9 +29,13 @@ class Cat : public Animal {
 	Cat();
 	Cat(const Cat& cp);
 	Cat& operator=(const Cat& cp);
-	~Cat();
+	virtual ~Cat();
 	void makeSound() const;
 };
+
+//
+// wrong
+//
 
 class WrongAnimal {
   public:

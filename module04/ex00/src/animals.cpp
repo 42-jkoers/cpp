@@ -1,6 +1,6 @@
 #include "animals.hpp"
 
-Animal::Animal() : type("generic animal") {
+Animal::Animal() : type("generic") {
 	std::cout << "Animal of type " << type << " was created" << std::endl;
 }
 
@@ -79,7 +79,7 @@ void Cat::makeSound() const {
 // wrong
 //
 
-WrongAnimal::WrongAnimal() : type("generic WrongAnimal") {
+WrongAnimal::WrongAnimal() : type("generic") {
 	std::cout << "WrongAnimal of type " << type << " was created" << std::endl;
 }
 
