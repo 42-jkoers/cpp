@@ -5,11 +5,11 @@
 //
 // Brain
 //
+#define N_IDEAS 100
 class Brain {
-	const static int n_ideas = 100;
 
   public:
-	std::string ideas[n_ideas];
+	std::string ideas[N_IDEAS];
 	Brain();
 	Brain(const Brain& cp);
 	Brain& operator=(const Brain& cp);
@@ -30,29 +30,24 @@ class Animal {
 };
 
 class Dog : public Animal {
-	Brain* brain;
 
   public:
+	Brain* brain;
 	Dog();
 	Dog(const Dog& cp);
 	Dog& operator=(const Dog& cp);
 	virtual ~Dog();
 	void makeSound() const;
-
-  private:
-	Brain* brain;
 };
 
 class Cat : public Animal {
   public:
+	Brain* brain;
 	Cat();
 	Cat(const Cat& cp);
 	Cat& operator=(const Cat& cp);
 	virtual ~Cat();
 	void makeSound() const;
-
-  private:
-	Brain* brain;
 };
 
 //

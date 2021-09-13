@@ -1,28 +1,32 @@
 #include "animals.hpp"
 
+#define N_ANIMALS 3
+
 int main() {
-	std::cout << std::endl;
 
-	const Animal* animal_animal = new Animal();
-	const Animal* animal_dog = new Dog();
-	const Animal* animal_cat = new Cat();
-	std::cout << std::endl;
-	animal_animal->makeSound();
-	animal_cat->makeSound();
-	animal_dog->makeSound();
-	delete animal_animal;
-	delete animal_cat;
-	delete animal_dog;
-	std::cout << std::endl;
-	std::cout << std::endl;
+	std::cout << "\nDemonstarting deep Brain copy" << std::endl;
+	Dog dog;
+	dog.brain->ideas[0] = "Why do people think a straw has 2 holes?";
+	Dog copy(dog);
 
-	// literately the only difference is the word virtual
-	const WrongAnimal* wrongAnimal_wrongAnimal = new WrongAnimal();
-	const WrongAnimal* wrongAnimal_cat = new WrongCat();
-	std::cout << std::endl;
-	wrongAnimal_wrongAnimal->makeSound();
-	wrongAnimal_cat->makeSound();
-	delete wrongAnimal_wrongAnimal;
-	delete wrongAnimal_cat;
+	std::cout << "\n     first idea of dog: " << dog.brain->ideas[0] << std::endl;
+	std::cout << "first idea of dog copy: " << copy.brain->ideas[0] << std::endl;
+
+	std::cout << "\n\n " << std::endl;
+
+	const int n_dogs = N_ANIMALS / 2;
+	Animal*	  animals[N_ANIMALS];
+
+	for (size_t i = 0; i < n_dogs; i++) {
+		animals[i] = new Dog();
+	}
+	for (size_t i = n_dogs; i < N_ANIMALS; i++) {
+		animals[i] = new Cat();
+	}
+
+	for (size_t i = 0; i < N_ANIMALS; i++) {
+		delete animals[i];
+	}
+
 	return 0;
 }

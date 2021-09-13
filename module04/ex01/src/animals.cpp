@@ -1,5 +1,44 @@
 #include "animals.hpp"
 
+std::string* copy_array(const std::string arr[], size_t len) {
+	std::string* copy = new std::string[len];
+	while (len--)
+		copy[len] = arr[len];
+	return copy;
+}
+
+//
+// Brain
+//
+
+Brain::Brain() {
+	std::cout << "Brain was created" << std::endl;
+}
+
+Brain::Brain(const Brain& cp) {
+	*this = cp;
+	for (size_t i = 0; i < N_IDEAS; i++) {
+		ideas[i] = cp.ideas[0];
+	}
+	std::cout << "Brain was created" << std::endl;
+}
+
+Brain& Brain::operator=(const Brain& cp) {
+	for (size_t i = 0; i < N_IDEAS; i++) {
+		ideas[i] = cp.ideas[0];
+	}
+	std::cout << "Brain was created" << std::endl;
+	return *this;
+}
+
+Brain::~Brain() {
+	std::cout << "Brain was deleted" << std::endl;
+}
+
+//
+// Animal
+//
+
 Animal::Animal() : type("generic") {
 	std::cout << "Animal of type " << type << " was created" << std::endl;
 }
@@ -29,21 +68,25 @@ void Animal::makeSound() const {
 
 // Dog
 Dog::Dog() : Animal("Dog") {
+	brain = new Brain();
 	std::cout << "Dog of type " << type << " was created" << std::endl;
 }
 
 Dog::Dog(const Dog& cp) {
 	*this = cp;
+	brain = new Brain(*cp.brain);
 	std::cout << "Dog of type " << type << " was created" << std::endl;
 }
 
 Dog& Dog::operator=(const Dog& cp) {
+	brain = new Brain(*cp.brain);
 	type = cp.type;
 	std::cout << "Dog of type " << type << " was created" << std::endl;
 	return *this;
 }
 
 Dog::~Dog() {
+	delete brain;
 	std::cout << "Dog of type " << type << " was destroyed" << std::endl;
 }
 
@@ -53,21 +96,25 @@ void Dog::makeSound() const {
 
 // Cat
 Cat::Cat() : Animal("Cat") {
+	brain = new Brain();
 	std::cout << "Cat of type " << type << " was created" << std::endl;
 }
 
 Cat::Cat(const Cat& cp) {
 	*this = cp;
+	brain = new Brain(*cp.brain);
 	std::cout << "Cat of type " << type << " was created" << std::endl;
 }
 
 Cat& Cat::operator=(const Cat& cp) {
+	brain = new Brain(*cp.brain);
 	type = cp.type;
 	std::cout << "Cat of type " << type << " was created" << std::endl;
 	return *this;
 }
 
 Cat::~Cat() {
+	delete brain;
 	std::cout << "Cat of type " << type << " was destroyed" << std::endl;
 }
 
