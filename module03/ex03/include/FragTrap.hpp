@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 
-class FragTrap : public ScavTrap {
+class FragTrap : public virtual ScavTrap {
   public:
 	FragTrap();
 	FragTrap(const std::string name);
