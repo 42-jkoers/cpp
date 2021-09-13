@@ -1,15 +1,28 @@
 #include "animals.hpp"
 
-#define N_ANIMALS 3
-
 int main() {
-	const int n_dogs = N_ANIMALS / 2;
-	const int n_cats = N_ANIMALS - n_dogs;
-	Animal	  animals[N_ANIMALS];
+	std::cout << std::endl;
 
-	for (size_t i = 0; i < n_dogs; i++) {
-		animals[i] = new
-	}
+	const Animal* animal_animal = new Animal();
+	const Animal* animal_dog = new Dog();
+	const Animal* animal_cat = new Cat();
+	std::cout << std::endl;
+	animal_animal->makeSound();
+	animal_cat->makeSound();
+	animal_dog->makeSound();
+	delete animal_animal;
+	delete animal_cat;
+	delete animal_dog;
+	std::cout << std::endl;
+	std::cout << std::endl;
 
+	// literately the only difference is the word virtual
+	const WrongAnimal* wrongAnimal_wrongAnimal = new WrongAnimal();
+	const WrongAnimal* wrongAnimal_cat = new WrongCat();
+	std::cout << std::endl;
+	wrongAnimal_wrongAnimal->makeSound();
+	wrongAnimal_cat->makeSound();
+	delete wrongAnimal_wrongAnimal;
+	delete wrongAnimal_cat;
 	return 0;
 }
