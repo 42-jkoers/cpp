@@ -2,6 +2,20 @@
 #include <cstdlib>
 #include <iostream>
 
+//
+// Brain
+//
+class Brain {
+	const static int n_ideas = 100;
+
+  public:
+	std::string ideas[n_ideas];
+	Brain();
+	Brain(const Brain& cp);
+	Brain& operator=(const Brain& cp);
+	~Brain();
+};
+
 class Animal {
   public:
 	Animal();
@@ -16,12 +30,17 @@ class Animal {
 };
 
 class Dog : public Animal {
+	Brain* brain;
+
   public:
 	Dog();
 	Dog(const Dog& cp);
 	Dog& operator=(const Dog& cp);
 	virtual ~Dog();
 	void makeSound() const;
+
+  private:
+	Brain* brain;
 };
 
 class Cat : public Animal {
@@ -31,6 +50,9 @@ class Cat : public Animal {
 	Cat& operator=(const Cat& cp);
 	virtual ~Cat();
 	void makeSound() const;
+
+  private:
+	Brain* brain;
 };
 
 //
