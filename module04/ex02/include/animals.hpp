@@ -18,14 +18,14 @@ class Brain {
 
 class Animal {
   public:
-	Animal();
-	Animal(std::string type);
-	Animal(const Animal& cp);
-	Animal& operator=(const Animal& cp);
 	virtual ~Animal();
 	virtual void makeSound() const;
 
   protected:
+	Animal();
+	Animal(std::string type);
+	Animal(const Animal& cp);
+	Animal&		operator=(const Animal& cp);
 	std::string type;
 };
 
