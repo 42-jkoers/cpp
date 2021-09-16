@@ -74,7 +74,6 @@ Dog::Dog() : Animal("Dog") {
 
 Dog::Dog(const Dog& cp) {
 	*this = cp;
-	brain = new Brain(*cp.brain);
 	std::cout << "Dog of type " << type << " was created" << std::endl;
 }
 
