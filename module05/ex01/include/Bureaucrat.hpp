@@ -1,6 +1,12 @@
 #pragma once
+#include "Form.hpp"
 #include <cstdlib>
 #include <iostream>
+
+#define GRADE_MIN 1
+#define GRADE_MAX 150
+
+class Form;
 
 class Bureaucrat {
   public:
@@ -14,6 +20,8 @@ class Bureaucrat {
 	long		getGrade() const;
 	void		incrementGrade();
 	void		decrementGrade();
+	void		signForm(const Form& f) const;
+
 	class GradeTooHighException : public std::exception {
 	  public:
 		GradeTooHighException();
@@ -26,8 +34,8 @@ class Bureaucrat {
 	};
 
   private:
-	const static long grade_min = 1;
-	const static long grade_max = 150;
+	const static long grade_min = GRADE_MIN;
+	const static long grade_max = GRADE_MAX;
 	void			  setGrade(long grade);
 	const std::string name;
 	long			  grade;

@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : name("no name"), grade(grade_min) {
 }
@@ -40,6 +41,13 @@ void Bureaucrat::incrementGrade() {
 
 void Bureaucrat::decrementGrade() {
 	setGrade(grade + 1);
+}
+
+void Bureaucrat::signForm(const Form& f) const {
+	if (grade > f.getGradeSign())
+		std::cout << "Bureaucrat " << name << " cannot sign form " << f.getName() << " because grade is too low" << std::endl;
+	else
+		std::cout << "Bureaucrat " << name << " signs form " << f.getName() << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& target) {
