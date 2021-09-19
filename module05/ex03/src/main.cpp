@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -14,36 +15,28 @@ int main() {
 	RobotomyRequestForm	   robotomyRequestForm("Sonic Youth");
 	ShrubberyCreationForm  shrubberyCreationForm("Beck");
 
-	try {
-		std::cout << "\nTrying to execute unsigned form" << std::endl;
-		presidentialPardonForm.execute(president);
-	} catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
-	}
-
-	try {
-		std::cout << "\nA pleb is trying to sign a presidentialPardonForm" << std::endl;
-		presidentialPardonForm.beSigned(pleb);
-	} catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
-	}
-
 	std::cout << "\nNow executing as president" << std::endl;
 	presidentialPardonForm.beSigned(president);
 	presidentialPardonForm.execute(president);
 
-	std::cout << "\nImplemeting shrubberyCreationForm" << std::endl;
-	shrubberyCreationForm.beSigned(president);
-	shrubberyCreationForm.execute(senator);
+	std::string forms[] = {
+		"shrubbery creation",
+		"robotomy request",
+		"presidential pardon",
+		"invalid form",
+	};
 
-	try {
-		robotomyRequestForm.beSigned(senator);
-		std::cout << "\nA excommunicatee is trying to execute a robotomyRequestForm" << std::endl;
-		robotomyRequestForm.execute(excommunicatee);
-	} catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
+	Intern intern;
+	for (size_t i = 0; i < 4; i++) {
+		Form* form = intern.makeForm(forms[i], "test target");
+		try {
+			form->beSigned(president);
+			form->execute(president);
+		} catch (const std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
+		delete form;
 	}
-	std::cout << "\nNow executing as president" << std::endl;
-	robotomyRequestForm.execute(president);
+
 	return 0;
 }

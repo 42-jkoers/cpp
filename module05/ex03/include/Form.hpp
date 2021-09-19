@@ -8,7 +8,7 @@ class Form {
 	Form();
 	Form(std::string name, long gradeSign, long gradeExecute, std::string target);
 	Form(const Form& src);
-	~Form();
+	virtual ~Form();
 	Form&		 operator=(Form const& cp);
 
 	void		 beSigned(const Bureaucrat& bureaucrat);
