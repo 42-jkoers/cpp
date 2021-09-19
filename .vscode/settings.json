@@ -48,6 +48,9 @@
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"scavtrap.hpp": "cpp",
-		"claptrap.hpp": "cpp"
+		"claptrap.hpp": "cpp",
+		"cstring": "cpp",
+		"list": "cpp",
+		"iomanip": "cpp"
 	}
 }
