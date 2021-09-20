@@ -2,12 +2,12 @@
 #include "Bureaucrat.hpp"
 
 Form::Form() : name(""),
-			   is_signed(false),
+			   isSigned(false),
 			   gradeSign(GRADE_MIN),
 			   gradeExecute(GRADE_MIN) {}
 
 Form::Form(std::string name, long gradeSign, long gradeExecute) : name(name),
-																  is_signed(false),
+																  isSigned(false),
 																  gradeSign(gradeSign),
 																  gradeExecute(gradeExecute) {
 	if (gradeSign < GRADE_MIN || gradeExecute < GRADE_MIN)
@@ -17,7 +17,7 @@ Form::Form(std::string name, long gradeSign, long gradeExecute) : name(name),
 }
 
 Form::Form(const Form& cp) : name(cp.getName()),
-							 is_signed(cp.isSigned()),
+							 isSigned(cp.isSigned()),
 							 gradeSign(cp.getGradeSign()),
 							 gradeExecute(cp.getGradeExecute()) {
 	*this = cp;
@@ -26,7 +26,7 @@ Form::Form(const Form& cp) : name(cp.getName()),
 Form::~Form() {}
 
 Form& Form::operator=(const Form& cp) {
-	is_signed = cp.is_signed;
+	isSigned = cp.isSigned;
 	return *this;
 }
 
@@ -43,15 +43,15 @@ long Form::getGradeExecute() const {
 }
 
 bool Form::isSigned() const {
-	return is_signed;
+	return isSigned;
 }
 
 void Form::beSigned(const Bureaucrat& b) {
-	if (is_signed)
+	if (isSigned)
 		return;
 	if (b.getGrade() > gradeSign)
 		throw Form::GradeTooLowException();
-	is_signed = true;
+	isSigned = true;
 }
 
 Form::GradeTooHighException::GradeTooHighException() {}

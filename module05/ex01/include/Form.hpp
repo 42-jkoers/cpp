@@ -31,7 +31,7 @@ class Form {
 
   private:
 	const std::string name;
-	bool			  is_signed;
+	bool			  isSigned;
 	const long		  gradeSign;
 	const long		  gradeExecute;
 };
