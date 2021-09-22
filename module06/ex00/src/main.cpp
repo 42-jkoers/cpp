@@ -15,7 +15,11 @@ bool parse_int(int& output, std::string str) {
 		i++;
 	if (i != str.size())
 		return false;
-	output = std::stoi(str);
+	try {
+		output = std::stoi(str);
+	} catch (const std::exception& e) {
+		return false;
+	}
 	return true;
 }
 
