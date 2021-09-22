@@ -14,25 +14,25 @@ class T {
 	void printer(double d);
 
   protected:
-	void printChar(char c);
-	void printChar(int i);
-	void printChar(float f);
-	void printChar(double d);
+	std::string printChar(char c);
+	std::string printChar(int i);
+	std::string printChar(float f);
+	std::string printChar(double d);
 
-	void printInt(char c);
-	void printInt(int i);
-	void printInt(float f);
-	void printInt(double d);
+	std::string printInt(char c);
+	std::string printInt(int i);
+	std::string printInt(float f);
+	std::string printInt(double d);
 
-	void printFloat(char c);
-	void printFloat(int i);
-	void printFloat(float f);
-	void printFloat(double d);
+	std::string printFloat(char c);
+	std::string printFloat(int i);
+	std::string printFloat(float f);
+	std::string printFloat(double d);
 
-	void printDouble(char c);
-	void printDouble(int i);
-	void printDouble(float f);
-	void printDouble(double d);
+	std::string printDouble(char c);
+	std::string printDouble(int i);
+	std::string printDouble(float f);
+	std::string printDouble(double d);
 
   private:
 	T& operator=(const T& cp);

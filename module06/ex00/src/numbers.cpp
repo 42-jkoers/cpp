@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iomanip>
 #include <limits>
+#include <sstream>
 
 T::T() {}
 T::T(const T& cp) { *this = cp; }
@@ -12,141 +13,108 @@ T& T::operator=(const T& cp) {
 }
 T::~T() {}
 
-static void impossible() {
-	std::cout << IMPOSSIBLE << std::ends;
-}
-
 // char
 
-void T::printChar(char c) {
-	std::cout << c << std::ends;
-}
+std::string T::printChar(char x) { return printChar(static_cast<int>(x)); }
 
-void T::printChar(int c) {
-	if (c < CHAR_MIN || c > CHAR_MAX)
-		return impossible();
-	if (!std::isprint(c)) {
-		std::cout << "Non displayable" << std::ends;
-		return;
+std::string T::printChar(int x) {
+	if (x < CHAR_MIN || x > CHAR_MAX)
+		return IMPOSSIBLE;
+	if (!std::isprint(x)) {
+		return "Non displayable";
 	}
-	std::cout << static_cast<char>(c) << std::ends;
+	std::stringstream ss;
+	ss << static_cast<char>(x);
+	return ss.str();
 }
 
-void T::printChar(float f) {
-	printChar(static_cast<double>(f));
-}
+std::string T::printChar(float x) { return printChar(static_cast<double>(x)); }
 
-void T::printChar(double d) {
-	if (d < CHAR_MIN || d > CHAR_MAX || std::round(d) != d)
-		return impossible();
-	std::cout << static_cast<double>(d) << std::ends;
+std::string T::printChar(double x) {
+	if (x < CHAR_MIN || x > CHAR_MAX || std::round(x) != x)
+		return IMPOSSIBLE;
+	std::stringstream ss;
+	ss << static_cast<double>(x);
+	return ss.str();
 }
 
 // int
 
-void T::printInt(char c) {
-	std::cout << static_cast<int>(c) << std::ends;
+std::string T::printInt(char x) { return printInt(static_cast<int>(x)); }
+
+std::string T::printInt(int x) {
+	std::stringstream ss;
+	ss << static_cast<int>(x);
+	return ss.str();
 }
 
-void T::printInt(int c) {
-	std::cout << static_cast<int>(c) << std::ends;
-}
+std::string T::printInt(float x) { return printInt(static_cast<double>(x)); }
 
-void T::printInt(float f) {
-	printInt(static_cast<double>(f));
-}
-
-void T::printInt(double d) {
-	if (d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX))
-		return impossible();
-	std::cout << static_cast<int>(d) << std::ends;
+std::string T::printInt(double x) {
+	if (x < static_cast<double>(INT_MIN) || x > static_cast<double>(INT_MAX))
+		return IMPOSSIBLE;
+	std::stringstream ss;
+	ss << static_cast<int>(x);
+	return ss.str();
 }
 
 // float
 
-void T::printFloat(char c) {
-	std::cout << static_cast<float>(c) << std::ends;
-}
+std::string T::printFloat(char x) { return printFloat(static_cast<double>(x)); }
+std::string T::printFloat(int x) { return printFloat(static_cast<double>(x)); }
+std::string T::printFloat(float x) { return printFloat(static_cast<double>(x)); }
 
-void T::printFloat(int c) {
-	std::cout << static_cast<float>(c) << std::ends;
-}
-
-void T::printFloat(float f) {
-	std::cout << static_cast<float>(f) << std::ends;
-}
-
-void T::printFloat(double d) {
-	if (d < std::numeric_limits<float>::min() || d > std::numeric_limits<double>::max())
-		return impossible();
-	std::cout << static_cast<float>(d) << std::ends;
+std::string T::printFloat(double x) {
+	if (x < std::numeric_limits<float>::min() || x > std::numeric_limits<double>::max())
+		return IMPOSSIBLE;
+	std::stringstream ss;
+	ss << static_cast<float>(x);
+	if (std::round(x) == x)
+		ss << ".0";
+	return ss.str();
 }
 
 // double
 
-void T::printDouble(char c) {
-	std::cout << static_cast<double>(c) << std::ends;
-}
+std::string T::printDouble(char x) { return printDouble(static_cast<double>(x)); }
+std::string T::printDouble(int x) { return printDouble(static_cast<double>(x)); }
+std::string T::printDouble(float x) { return printDouble(static_cast<double>(x)); }
 
-void T::printDouble(int c) {
-	std::cout << static_cast<double>(c) << std::ends;
-}
-
-void T::printDouble(float f) {
-	std::cout << static_cast<double>(f) << std::ends;
-}
-
-void T::printDouble(double d) {
-	std::cout << static_cast<double>(d) << std::ends;
+std::string T::printDouble(double x) {
+	std::stringstream ss;
+	ss << static_cast<double>(x);
+	if (std::round(x) == x)
+		ss << ".0";
+	return ss.str();
 }
 
 // printers
 
 void T::printer(char x) {
-	std::cout << "AS CHAR" << std::endl;
-	std::cout << "char:   ";
-	printChar(x);
-	std::cout << "\nint:    ";
-	printInt(x);
-	std::cout << "\nfloat:  ";
-	printFloat(x);
-	std::cout << "f\ndouble: ";
-	printDouble(x);
-	std::cout << std::endl;
+	std::cout << "char:   " << printChar(x) << "\n"
+			  << "int:    " << printInt(x) << "\n"
+			  << "float:  " << printFloat(x) << "f\n"
+			  << "double: " << printDouble(x) << "\n"
+			  << std::ends;
 }
 void T::printer(int x) {
-	std::cout << "IAS INT" << std::endl;
-	std::cout << "char:   ";
-	printChar(x);
-	std::cout << "\nint:    ";
-	printInt(x);
-	std::cout << "\nfloat:  ";
-	printFloat(x);
-	std::cout << "f\ndouble: ";
-	printDouble(x);
-	std::cout << std::endl;
+	std::cout << "char:   " << printChar(x) << "\n"
+			  << "int:    " << printInt(x) << "\n"
+			  << "float:  " << printFloat(x) << "f\n"
+			  << "double: " << printDouble(x) << "\n"
+			  << std::ends;
 }
 void T::printer(float x) {
-	std::cout << "InAS FLOAT" << std::endl;
-	std::cout << "char:   ";
-	printChar(x);
-	std::cout << "\nint:    ";
-	printInt(x);
-	std::cout << "\nfloat:  ";
-	printFloat(x);
-	std::cout << "f\ndouble: ";
-	printDouble(x);
-	std::cout << std::endl;
+	std::cout << "char:   " << printChar(x) << "\n"
+			  << "int:    " << printInt(x) << "\n"
+			  << "float:  " << printFloat(x) << "f\n"
+			  << "double: " << printDouble(x) << "\n"
+			  << std::ends;
 }
 void T::printer(double x) {
-	std::cout << "InAS DOUBLE" << std::endl;
-	std::cout << "char:   ";
-	printChar(x);
-	std::cout << "\nint:    ";
-	printInt(x);
-	std::cout << "\nfloat:  ";
-	printFloat(x);
-	std::cout << "f\ndouble: ";
-	printDouble(x);
-	std::cout << std::endl;
+	std::cout << "char:   " << printChar(x) << "\n"
+			  << "int:    " << printInt(x) << "\n"
+			  << "float:  " << printFloat(x) << "f\n"
+			  << "double: " << printDouble(x) << "\n"
+			  << std::ends;
 }
