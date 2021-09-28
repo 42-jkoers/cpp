@@ -1,26 +1,54 @@
-NAME = megaphone
 
-SRC = $(shell find . -name *.cpp)
+NAME      		= exercise
 
-OBJ = $(SRC:%.cpp=%.o)
+CC          	= clang++
+CFLAGS      	= -Wall -Wextra -Werror -pedantic -std=c++98 -Wshadow -Wno-shadow
+# CFLAGS      	= -Wall -Wextra -Werror -Wuninitialized -O3
 
-CPP = clang++
-FLAG = -Wall -Wextra -Werror -pedantic -std=c++98 -Wshadow -Wno-shadow
+SRCEXT      	= cpp
+SRCDIR      	= src
+OBJEXT      	= o
+HEADEREXT		= hpp
+HEADERDIR		= include
+BUILDDIR    	= obj
+
+LIBS			=
+INCLUDES		= -I$(HEADERDIR)
+LINK			=
+
+OBJ_IN_DIR 		= $(BUILDDIR)/*.$(OBJEXT)
+SRC 			= $(shell find $(SRCDIR) -name *.$(SRCEXT))
+HEADERS 		= $(shell find $(HEADERDIR) -name *.$(HEADEREXT))
+OBJ				= $(foreach src,$(SRC),$(BUILDDIR)/$(notdir $(src:.$(SRCEXT)=.$(OBJEXT))))
+
+SILECE_MAKE 	= | grep -v -E ".*Leaving directory|.*Entering directory"
+VPATH 			= $(shell find $(SRCDIR) -type d | tr '\n' ':' | sed -E 's/(.*):/\1/')
+.SUFFIXES:
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CPP) $(FLAG) -o $@ $^
+$(NAME): $(BUILDDIR)/ $(OBJ) $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ_IN_DIR) $(LIBS) -o $(NAME) $(LINK)
 
-%.o: %.cpp %.hpp
-	$(CPP) $(FLAG) -o $@ -c $<
+$(BUILDDIR)/%.$(OBJEXT): %.$(SRCEXT) $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $(BUILDDIR)/$(notdir $@)
+# sources
+
 
 clean:
-	rm -f $(OBJ)
+ifneq ($(BUILDDIR),.)
+	/bin/rm -rf $(BUILDDIR)/
+endif
 
-fclean: clean
-	rm -f $(NAME)
+fclean: | clean
+	/bin/rm -f $(NAME)
 
-re: fclean all
+re: | fclean all
 
-.PHONY: all clean fclean re
+$(BUILDDIR)/:
+	mkdir -p $(BUILDDIR)
+
+silent:
+	@$(MAKE) > /dev/null
+
+.PHONY: all clean fclean re silent

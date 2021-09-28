@@ -3,18 +3,21 @@
 
 #include <string>
 
-class Zombie
-{
+class Zombie {
 
-public:
-	std::string name;
+  public:
 	Zombie();
 	Zombie(std::string name);
-	void announce();
+	void setName(std::string name);
+	void announce() const;
 	~Zombie();
+
+  private:
+	std::string name;
 };
 
-Zombie *newZombie(std::string name);
-Zombie *zombieHorde(int N, std::string name);
+Zombie* newZombie(std::string name);
+void	randomChump(std::string name);
+Zombie* zombieHorde(int N, std::string name);
 
 #endif

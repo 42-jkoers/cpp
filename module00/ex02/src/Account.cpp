@@ -7,23 +7,23 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-int Account::getNbAccounts(void) {
+int Account::getNbAccounts() {
 	return _nbAccounts;
 }
 
-int Account::getTotalAmount(void) {
+int Account::getTotalAmount() {
 	return _totalAmount;
 }
 
-int Account::getNbDeposits(void) {
+int Account::getNbDeposits() {
 	return _totalNbDeposits;
 }
 
-int Account::getNbWithdrawals(void) {
+int Account::getNbWithdrawals() {
 	return _totalNbWithdrawals;
 }
 
-void Account::displayAccountsInfos(void) {
+void Account::displayAccountsInfos() {
 	_displayTimestamp();
 	std::cout << "accounts:" << getNbAccounts() << ";"
 			  << "total:" << getTotalAmount() << ";"
@@ -45,7 +45,7 @@ Account::Account(int initial_deposit) {
 			  << "created" << std::endl;
 }
 
-Account::~Account(void) {
+Account::~Account() {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";"
 			  << "amount:" << _amount << ";"
@@ -72,24 +72,24 @@ bool Account::makeWithdrawal(int withdrawal) {
 			  << "p_amount:" << _amount << ";";
 	if (withdrawal > _amount) {
 		std::cout << "withdrawal:refused" << std::endl;
-		return (false);
+		return false;
 	}
 	_amount -= withdrawal;
 	_nbWithdrawals++;
 	_totalAmount -= withdrawal;
 	_totalNbWithdrawals++;
-	std::cout << "withdrawal:" << withdrawal << ";";
-	std::cout << "amount:" << _amount << ";"
+	std::cout << "withdrawal:" << withdrawal << ";"
+			  << "amount:" << _amount << ";"
 			  << "nb_withdrawals:" << _nbWithdrawals << std::endl;
-	return (true);
+	return true;
 }
 
 // function not used in test, we don't know what it should do
-int Account::checkAmount(void) const {
+int Account::checkAmount() const {
 	return (-1);
 }
 
-void Account::displayStatus(void) const {
+void Account::displayStatus() const {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";"
 			  << "amount:" << _amount << ";"
@@ -97,12 +97,11 @@ void Account::displayStatus(void) const {
 			  << "withdrawals:" << _nbWithdrawals << std::endl;
 }
 
-void Account::_displayTimestamp(void) {
+void Account::_displayTimestamp() {
 	char			  buf[100];
 	const std::time_t now = std::time(NULL);
 	std::strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", std::localtime(&now));
 	std::cout << "[" << buf << "] ";
 }
 
-Account::Account(void) {
-}
+Account::Account() {}
