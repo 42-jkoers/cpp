@@ -3,7 +3,7 @@
 #include <string>
 
 #define N_CONTACTS 8
-#define TAB_WIDTH 10
+#define COLUMN_WIDTH 10
 
 class Contact {
   public:
@@ -12,16 +12,21 @@ class Contact {
 	}
 
 	void assign(size_t index) {
-		std::cout << "    firstName: ";
-		std::getline(std::cin, firstName);
-		std::cout << "     lastName: ";
-		std::getline(std::cin, lastName);
-		std::cout << "     nickName: ";
-		std::getline(std::cin, nickName);
-		std::cout << "  phoneNumber: ";
-		std::getline(std::cin, phoneNumber);
-		std::cout << "darkestSecret: ";
-		std::getline(std::cin, darkestSecret);
+		std::cout << "    firstName: " << std::ends;
+		if (!std::getline(std::cin, firstName))
+			return;
+		std::cout << "     lastName: " << std::ends;
+		if (!std::getline(std::cin, lastName))
+			return;
+		std::cout << "     nickName: " << std::ends;
+		if (!std::getline(std::cin, nickName))
+			return;
+		std::cout << "  phoneNumber: " << std::ends;
+		if (!std::getline(std::cin, phoneNumber))
+			return;
+		std::cout << "darkestSecret: " << std::ends;
+		if (!std::getline(std::cin, darkestSecret))
+			return;
 		i = index;
 		assigned = true;
 	}
@@ -58,10 +63,10 @@ class Contact {
 	void column(std::string str) {
 		const size_t len = str.length();
 
-		for (size_t i = len; i < TAB_WIDTH; i++)
+		for (size_t i = len; i < COLUMN_WIDTH; i++)
 			std::cout << " ";
-		if (len > TAB_WIDTH - 1)
-			std::cout << str.substr(0, TAB_WIDTH - 1) + ".";
+		if (len > COLUMN_WIDTH - 1)
+			std::cout << str.substr(0, COLUMN_WIDTH - 1) + ".";
 		else
 			std::cout << str;
 		std::cout << "|";
@@ -71,31 +76,37 @@ class Contact {
 class PhoneBook {
   public:
 	PhoneBook() {
-		i = 0;
+		assignedContacts = 0;
 	}
 	void add() {
-		contacts[i].assign(i);
-		i++;
-		if (i == N_CONTACTS)
-			i = 0;
+		contacts[assignedContacts].assign(assignedContacts);
+		assignedContacts++;
+		if (assignedContacts == N_CONTACTS)
+			assignedContacts = 0;
 	}
 
 	void search() {
 		for (size_t i = 0; i < N_CONTACTS; i++)
 			contacts[i].printColumn();
-		std::cout << "Input index:" << std::ends;
-		size_t		i;
-		std::string in;
-		std::getline(std::cin, in);
-		i = std::stoul(in.c_str());
-		if (i + 1 < N_CONTACTS)
-			contacts[i].printInfo();
+		std::cout << "Input index: " << std::ends;
+		std::string input;
+		size_t		phonebookI;
+		if (!std::getline(std::cin, input) || !tryParse(input, phonebookI) || phonebookI >= assignedContacts)
+			std::cout << "Invalid index" << std::endl;
 		else
-			std::cout << "Invalid index, range: 0-" << N_CONTACTS - 1 << std::endl;
+			contacts[phonebookI].printInfo();
 	}
 
   private:
-	size_t	i;
+	bool tryParse(std::string& input, size_t& output) {
+		try {
+			output = std::stoul(input);
+		} catch (std::invalid_argument) {
+			return false;
+		}
+		return true;
+	}
+	size_t	assignedContacts;
 	Contact contacts[N_CONTACTS];
 };
 
@@ -105,10 +116,11 @@ int main() {
 
 	while (true) {
 		std::cout << "$> " << std::ends;
-		std::getline(std::cin, input);
-		if (input == "EXIT")
+		if (!std::getline(std::cin, input) || input == "EXIT") {
+			std::cout << "stopppppp" << std::endl;
 			break;
-		else if (input == "ADD") {
+		}
+		if (input == "ADD") {
 			phoneBook.add();
 		} else if (input == "SEARCH")
 			phoneBook.search();

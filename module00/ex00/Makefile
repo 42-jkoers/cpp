@@ -1,12 +1,12 @@
 
-NAME      		= exercise
+NAME      		= megaphone
 
 CC          	= clang++
 CFLAGS      	= -Wall -Wextra -Werror -pedantic -std=c++98 -Wshadow -Wno-shadow
 # CFLAGS      	= -Wall -Wextra -Werror -Wuninitialized -O3
 
 SRCEXT      	= cpp
-SRCDIR      	= src
+SRCDIR      	= .
 OBJEXT      	= o
 HEADEREXT		= hpp
 HEADERDIR		= include
