@@ -3,3 +3,5 @@ obj/
 exercise
 .future
 test.cpp
+/module01/ex04/replace
+/module01/ex04/**/*.replace
