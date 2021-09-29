@@ -39,7 +39,7 @@ test: all
 	./replace ./testFiles/bTOa.txt bb aa
 	diff ./testFiles/bTOa.txt.replace ./testFiles/bTOa.txt.expected
 	./replace ./testFiles/noMatch.txt bb aa
-	diff ./testFiles/noMatch.txt.replace ./testFiles/noMatch.txt.expected
+	diff ./testFiles/noMatch.txt.replace ./testFiles/noMatch.txt
 
 clean:
 ifneq ($(BUILDDIR),.)
