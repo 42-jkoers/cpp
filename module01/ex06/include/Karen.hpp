@@ -6,6 +6,8 @@ class Karen {
 	Karen();
 	virtual ~Karen();
 	void complain(std::string level);
+	void complainAllLevels(std::string level);
+	void insignificant();
 
   private:
 	void   debug();
