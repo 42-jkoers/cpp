@@ -1,4 +1,4 @@
-#include "animals.hpp"
+#include "../include/animals.hpp"
 
 #define N_ANIMALS 3
 
@@ -27,6 +27,5 @@ int main() {
 	for (size_t i = 0; i < N_ANIMALS; i++) {
 		delete animals[i];
 	}
-
 	return 0;
 }

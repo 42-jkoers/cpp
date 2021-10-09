@@ -4,12 +4,12 @@
 
 class DiamondTrap : public FragTrap, public ScavTrap {
   public:
-	DiamondTrap();
 	DiamondTrap(std::string name);
 	DiamondTrap(const DiamondTrap& cp);
-	~DiamondTrap();
-	DiamondTrap& operator=(const DiamondTrap& cp);
+	virtual ~DiamondTrap();
 
   private:
-	std::string diamondTrapName;
+	std::string name;
+	DiamondTrap();
+	DiamondTrap& operator=(const DiamondTrap& cp);
 };

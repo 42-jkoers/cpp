@@ -1,11 +1,4 @@
-#include "animals.hpp"
-
-std::string* copy_array(const std::string arr[], size_t len) {
-	std::string* copy = new std::string[len];
-	while (len--)
-		copy[len] = arr[len];
-	return copy;
-}
+#include "../include/animals.hpp"
 
 //
 // Brain

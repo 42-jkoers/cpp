@@ -10,6 +10,7 @@ class Animal {
 	Animal& operator=(const Animal& cp);
 	virtual ~Animal();
 	virtual void makeSound() const;
+	std::string	 getType() const;
 
   protected:
 	std::string type;
@@ -44,7 +45,8 @@ class WrongAnimal {
 	WrongAnimal(const WrongAnimal& cp);
 	WrongAnimal& operator=(const WrongAnimal& cp);
 	~WrongAnimal();
-	void makeSound() const;
+	void		makeSound() const;
+	std::string getType() const;
 
   protected:
 	std::string type;

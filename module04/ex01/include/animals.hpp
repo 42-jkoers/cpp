@@ -60,7 +60,7 @@ class WrongAnimal {
 	WrongAnimal(std::string type);
 	WrongAnimal(const WrongAnimal& cp);
 	WrongAnimal& operator=(const WrongAnimal& cp);
-	~WrongAnimal();
+	virtual ~WrongAnimal();
 	void makeSound() const;
 
   protected:
@@ -72,6 +72,6 @@ class WrongCat : public WrongAnimal {
 	WrongCat();
 	WrongCat(const WrongCat& cp);
 	WrongCat& operator=(const WrongCat& cp);
-	~WrongCat();
+	virtual ~WrongCat();
 	void makeSound() const;
 };
