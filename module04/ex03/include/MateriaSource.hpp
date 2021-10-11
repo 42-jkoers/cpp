@@ -1,5 +1,4 @@
-#ifndef MATERIASOURCE_HPP
-#define MATERIASOURCE_HPP
+#pragma once
 
 #include "IMateriaSource.hpp"
 #include <string>
@@ -11,11 +10,11 @@ class MateriaSource : public IMateriaSource {
 
   public:
 	MateriaSource();
-	MateriaSource(const MateriaSource& other);
 	virtual ~MateriaSource();
-	MateriaSource& operator=(const MateriaSource& other);
-	void		   learnMateria(AMateria* m);
-	AMateria*	   createMateria(const std::string& type);
-};
+	void	  learnMateria(AMateria* m);
+	AMateria* createMateria(const std::string& type);
 
-#endif
+  private:
+	MateriaSource(const MateriaSource& other);
+	MateriaSource& operator=(const MateriaSource& other);
+};

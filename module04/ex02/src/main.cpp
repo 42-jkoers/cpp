@@ -3,8 +3,8 @@
 #define N_ANIMALS 2
 
 int main() {
-	const int n_dogs = N_ANIMALS / 2;
-	Animal*	  animals[N_ANIMALS];
+	const size_t n_dogs = N_ANIMALS / 2;
+	Animal*		 animals[N_ANIMALS];
 
 	for (size_t i = 0; i < n_dogs; i++) {
 		animals[i] = new Dog();

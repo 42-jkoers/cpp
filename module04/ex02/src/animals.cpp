@@ -11,14 +11,14 @@ Brain::Brain() {
 Brain::Brain(const Brain& cp) {
 	*this = cp;
 	for (size_t i = 0; i < N_IDEAS; i++) {
-		ideas[i] = cp.ideas[0];
+		ideas[i] = cp.ideas[i];
 	}
 	std::cout << "Brain was copied" << std::endl;
 }
 
 Brain& Brain::operator=(const Brain& cp) {
 	for (size_t i = 0; i < N_IDEAS; i++) {
-		ideas[i] = cp.ideas[0];
+		ideas[i] = cp.ideas[i];
 	}
 	std::cout << "Brain was copied" << std::endl;
 	return *this;

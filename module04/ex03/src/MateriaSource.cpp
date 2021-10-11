@@ -25,7 +25,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& cp) {
 		learnMateria(cp.sources[i]->clone());
 	for (size_t i = 0; i < 4; i++)
 		sources[i] = 0;
-	return (*this);
+	return *this;
 }
 
 void MateriaSource::learnMateria(AMateria* m) {
@@ -43,5 +43,5 @@ AMateria* MateriaSource::createMateria(const std::string& type) {
 		if (sources[i]->getType() == type)
 			return (sources[i]->clone());
 	}
-	return (0);
+	return 0;
 }

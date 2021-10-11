@@ -11,24 +11,20 @@ int main() {
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
-	ICharacter* jeff = new Character("jeff");
-	jeff->equip(src->createMateria("ice"));
-	jeff->equip(src->createMateria("cure"));
-	jeff->equip(src->createMateria("ice"));
+	ICharacter* me = new Character("me");
+	AMateria*	tmp;
 
-	ICharacter* leo = new Character("leo");
-	jeff->use(0, *leo);
-	jeff->use(1, *leo);
-	jeff->use(2, *leo);
-	jeff->use(3, *leo);
-	jeff->use(-1, *leo);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
 
-	std::cout << "Unequip 3rd" << std::endl;
-	jeff->unequip(2);
-	jeff->use(2, *leo);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
 
-	delete leo;
-	delete jeff;
+	delete bob;
+	delete me;
 	delete src;
-	return (0);
+	return 0;
 }
