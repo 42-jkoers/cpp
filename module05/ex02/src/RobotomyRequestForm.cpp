@@ -19,7 +19,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
 	validateExecution(executor);
-	if ((rand() % 2) == 1) {
+	if (rand() % 2) {
 		std::cout << "*Drrrrilling noises*" << std::endl;
 		std::cout << getTarget() << " has been robotomized successfully" << std::endl;
 	} else

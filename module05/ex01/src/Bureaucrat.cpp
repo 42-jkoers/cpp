@@ -6,9 +6,9 @@ Bureaucrat::Bureaucrat() : name("no name"), grade(grade_min) {
 
 void Bureaucrat::setGrade(long grade) {
 	if (grade < grade_min)
-		throw GradeTooLowException();
-	else if (grade > grade_max)
 		throw GradeTooHighException();
+	else if (grade > grade_max)
+		throw GradeTooLowException();
 	this->grade = grade;
 }
 

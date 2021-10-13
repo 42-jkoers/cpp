@@ -17,7 +17,7 @@ Form::Form(std::string name, long gradeSign, long gradeExecute) : name(name),
 }
 
 Form::Form(const Form& cp) : name(cp.getName()),
-							 isSigned(cp.isSigned()),
+							 isSigned(cp.getIsSigned()),
 							 gradeSign(cp.getGradeSign()),
 							 gradeExecute(cp.getGradeExecute()) {
 	*this = cp;
@@ -42,7 +42,7 @@ long Form::getGradeExecute() const {
 	return gradeExecute;
 }
 
-bool Form::isSigned() const {
+bool Form::getIsSigned() const {
 	return isSigned;
 }
 
@@ -68,7 +68,7 @@ const char* Form::GradeTooLowException::what() const throw() {
 
 std::ostream& operator<<(std::ostream& o, const Form& f) {
 	o << "form: " << f.getName()
-	  << ", state: " << f.isSigned()
+	  << ", state: " << f.getIsSigned()
 	  << ", grade to sign: " << f.getGradeSign()
 	  << ", grade to execute: " << f.getGradeExecute();
 	return o;

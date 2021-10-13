@@ -24,7 +24,8 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	const std::string filepath = "./" + getTarget() + "_shrubbery";
 	std::ofstream	  file;
 	file.open(filepath.c_str());
-	file << "    *\n   /_\\\n  /_\\_\\\n /_/_/_\\\n   [_]\n";
+	for (size_t i = 0; i < 2; i++)
+		file << "    *\n   /_\\\n  /_\\_\\\n /_/_/_\\\n   [_]\n";
 	file.close();
 	std::cout << filepath << " was created successfully" << std::endl;
 }
