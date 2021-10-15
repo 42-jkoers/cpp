@@ -1,8 +1,9 @@
 #include "numbers.hpp"
-#include <regex>
+#include <sstream>
+#include <string>
 
 bool parse_char(char& output, std::string str) {
-	if (std::isprint(str[0]) && !std::isdigit(str[0]) && !str[1]) {
+	if (std::isprint(str[0]) && !std::isdigit(str[0]) && str.length() == 1) {
 		output = str[0];
 		return true;
 	}
@@ -10,21 +11,14 @@ bool parse_char(char& output, std::string str) {
 }
 
 bool parse_int(int& output, std::string str) {
-	size_t i = 0;
-	while (i < str.size() && std::isdigit(str[i]))
-		i++;
-	if (i != str.size())
-		return false;
-	try {
-		output = std::stoi(str);
-	} catch (const std::exception& e) {
-		return false;
-	}
-	return true;
+	char			  c;
+	std::stringstream ss(str);
+	ss >> output;
+	return !(ss.fail() || ss.get(c));
 }
 
 bool parse_float(float& output, std::string str) {
-	if (!(str == "-inff" || str == "+inff" || str == "nanf")) {
+	if (!(str == "inff" || str == "-inff" || str == "+inff" || str == "nanf")) {
 		size_t i = 0;
 		while (i < str.size() && std::isdigit(str[i]))
 			i++;
@@ -36,7 +30,11 @@ bool parse_float(float& output, std::string str) {
 		if (i + 1 != str.size() || str[i] != 'f')
 			return false;
 	}
-	output = std::stof(str);
+	try {
+		output = std::stof(str);
+	} catch (const std::exception& e) {
+		return false;
+	}
 	return true;
 }
 
@@ -53,7 +51,11 @@ bool parse_double(double& output, std::string str) {
 		if (i != str.size())
 			return false;
 	}
-	output = std::stod(str);
+	try {
+		output = std::stod(str);
+	} catch (const std::exception& e) {
+		return false;
+	}
 	return true;
 }
 

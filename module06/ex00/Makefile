@@ -34,6 +34,20 @@ $(BUILDDIR)/%.$(OBJEXT): %.$(SRCEXT) $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $(BUILDDIR)/$(notdir $@)
 # sources
 
+test: all
+	@echo
+	./$(NAME) 0											; echo
+	./$(NAME) 6											; echo
+	./$(NAME) 1.2											; echo
+	./$(NAME) a											; echo
+	./$(NAME) -1											; echo
+	./$(NAME) nanf									 		; echo
+	./$(NAME) -inf										 	; echo
+	./$(NAME) 9999999999999999999999999999999999999999999999999					; echo
+	./$(NAME) 9a											; echo
+	./$(NAME) aa											; echo
+
+
 
 clean:
 ifneq ($(BUILDDIR),.)
