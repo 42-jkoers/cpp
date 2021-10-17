@@ -39,7 +39,7 @@ bool parse_float(float& output, std::string str) {
 }
 
 bool parse_double(double& output, std::string str) {
-	if (!(str == "-inf" || str == "+inf" || str == "nan")) {
+	if (!(str == "inf" || str == "-inf" || str == "+inf" || str == "nan")) {
 		size_t i = 0;
 		while (std::isdigit(str[i]))
 			i++;
