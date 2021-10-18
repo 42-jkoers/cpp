@@ -1,7 +1,5 @@
 #include "Intern.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+
 #define N_FORMS 3
 
 Intern::Intern() {}
@@ -15,18 +13,6 @@ Intern::~Intern() {}
 Intern& Intern::operator=(const Intern& cp) {
 	(void)cp;
 	return *this;
-}
-
-static Form* makeShrubberyCreationForm(std::string target) {
-	return new ShrubberyCreationForm(target);
-}
-
-static Form* makeRobotomyRequestForm(std::string target) {
-	return new RobotomyRequestForm(target);
-}
-
-static Form* makePresidentialPardonForm(std::string target) {
-	return new PresidentialPardonForm(target);
 }
 
 Form* Intern::makeForm(std::string form, std::string target) {

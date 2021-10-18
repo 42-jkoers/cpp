@@ -29,13 +29,15 @@ int main() {
 	Intern intern;
 	for (size_t i = 0; i < 4; i++) {
 		Form* form = intern.makeForm(forms[i], "test target");
-		try {
-			form->beSigned(president);
-			form->execute(president);
-		} catch (const std::exception& e) {
-			std::cerr << e.what() << std::endl;
+		if (form) {
+			try {
+				form->beSigned(president);
+				form->execute(president);
+			} catch (const std::exception& e) {
+				std::cerr << e.what() << std::endl;
+			}
+			delete form;
 		}
-		delete form;
 	}
 
 	return 0;
