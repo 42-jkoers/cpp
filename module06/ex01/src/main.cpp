@@ -20,13 +20,17 @@ Data* deserialize(uintptr_t raw) {
 
 int main() {
 	Data	  data = {-42, "Hello World!"};
+	uintptr_t serialized = serialize(&data);
+	Data*	  deserialized = deserialize(serialized);
 
-	uintptr_t p = serialize(&data);
-	Data*	  copy = deserialize(p);
-
-	std::cout << "x   : " << copy->x << "\n"
-			  << "type: " << copy->type << "\n"
+	std::cout << "x   : " << deserialized->x << "\n"
+			  << "type: " << deserialized->type << "\n"
 			  << std::endl;
 
+	data.x = 3;
+
+	std::cout << "x   : " << deserialized->x << "\n"
+			  << "type: " << deserialized->type << "\n"
+			  << std::endl;
 	return 0;
 }
