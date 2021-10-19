@@ -43,7 +43,7 @@ test: all
 	./$(NAME) -1											; echo
 	./$(NAME) nanf									 		; echo
 	./$(NAME) -inf										 	; echo
-	./$(NAME) 9999999999999999999999999999999999999999999999999					; echo
+	./$(NAME) 9999999999999999999999999999999999999999999999999.0					; echo
 	./$(NAME) 9a											; echo
 	./$(NAME) aa											; echo
 

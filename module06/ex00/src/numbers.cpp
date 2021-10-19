@@ -77,7 +77,7 @@ std::string T::printDouble(double x) {
 // printers
 
 void T::printer(char x) {
-	std::cout << "As char" << std::endl;
+	// std::cout << "As char" << std::endl;
 	std::cout << "char:   " << printChar(x) << "\n"
 			  << "int:    " << printInt(x) << "\n"
 			  << "float:  " << printFloat(x) << "\n"
@@ -85,7 +85,7 @@ void T::printer(char x) {
 			  << std::ends;
 }
 void T::printer(int x) {
-	std::cout << "As int" << std::endl;
+	// std::cout << "As int" << std::endl;
 	std::cout << "char:   " << printChar(x) << "\n"
 			  << "int:    " << printInt(x) << "\n"
 			  << "float:  " << printFloat(x) << "\n"
@@ -93,7 +93,7 @@ void T::printer(int x) {
 			  << std::ends;
 }
 void T::printer(float x) {
-	std::cout << "As float" << std::endl;
+	// std::cout << "As float" << std::endl;
 	std::cout << "char:   " << printChar(x) << "\n"
 			  << "int:    " << printInt(x) << "\n"
 			  << "float:  " << printFloat(x) << "\n"
@@ -101,7 +101,7 @@ void T::printer(float x) {
 			  << std::ends;
 }
 void T::printer(double x) {
-	std::cout << "As double" << std::endl;
+	// std::cout << "As double" << std::endl;
 	std::cout << "char:   " << printChar(x) << "\n"
 			  << "int:    " << printInt(x) << "\n"
 			  << "float:  " << printFloat(x) << "\n"

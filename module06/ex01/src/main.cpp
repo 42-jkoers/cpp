@@ -11,38 +11,26 @@ typedef struct s_Data {
 } Data;
 
 uintptr_t serialize(Data* ptr) {
-	unsigned char* p = new unsigned char[sizeof(Data)];
-	size_t		   offset = 0;
-	std::memcpy(p + offset, &ptr->x, sizeof(ptr->x));
-	offset += sizeof(ptr->x);
-	std::memcpy(p + offset, &ptr->type, sizeof(ptr->type));
-	// offset += sizeof(ptr->x);
-	return (uintptr_t)p;
+	return reinterpret_cast<uintptr_t>(ptr);
 }
 
 Data* deserialize(uintptr_t raw) {
-	Data*  data = new Data;
-	size_t offset = 0;
-
-	std::memcpy(&data->x, (void*)(raw + offset), sizeof(data->x));
-	offset += sizeof(data->x);
-	std::memcpy(&data->type, (void*)(raw + offset), sizeof(data->type));
-	// offset += sizeof(data->type);
-	return data;
+	return reinterpret_cast<Data*>(raw);
 }
 
 int main() {
 	Data	  data = {-42, "Hello World!"};
+	uintptr_t serialized = serialize(&data);
+	Data*	  deserialized = deserialize(serialized);
 
-	uintptr_t p = serialize(&data);
-	Data*	  copy = deserialize(p);
-
-	std::cout << "x   : " << copy->x << "\n"
-			  << "type: " << copy->type << "\n"
+	std::cout << "x   : " << deserialized->x << "\n"
+			  << "type: " << deserialized->type << "\n"
 			  << std::endl;
 
-	// delete p;
-	// delete copy;
+	data.x = 3;
 
+	std::cout << "x   : " << deserialized->x << "\n"
+			  << "type: " << deserialized->type << "\n"
+			  << std::endl;
 	return 0;
 }
