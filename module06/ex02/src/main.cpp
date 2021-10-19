@@ -16,6 +16,10 @@ Base* generate() {
 }
 
 void identify(Base* p) {
+	if (!p) {
+		std::cout << "NULL!" << std::endl;
+		return;
+	}
 	try {
 		A& x = dynamic_cast<A&>(*p);
 		(void)x;

@@ -2,13 +2,6 @@
 #include <limits>
 #include <math.h>
 
-template <typename T>
-void iter(T* address, size_t len, void (*fn)(T)) {
-	for (size_t i = 0; i < len; i++) {
-		fn(address[i]);
-	}
-}
-
 void charIteratorPrinter(char c) {
 	std::cout << c << " " << std::ends;
 }
