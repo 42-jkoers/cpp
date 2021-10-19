@@ -1,29 +1,53 @@
-#include "Array.hpp"
-#include <algorithm>
-#include <cstring>
-#include <iterator>
-template <class T>
-Array<T>::Array() {
-	array = new T[0];
-}
+#include <iostream>
+#include <Array.hpp>
 
-template <class T>
-Array<T>::Array(unsigned int n) : n(n) {
-	array = new T[n];
-}
+#define MAX_VAL 750
+int main(int, char**)
+{
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
 
-template <class T>
-Array<T>::Array(const Array& cp) {
-	*this = cp;
-	std::copy(std::begin(cp.array), std::end(cp.array), std::begin(array));
-}
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
-template <class T>
-Array& Array<T>::operator=(const Array& cp) {
-	n = cp.n;
-	std::copy(std::begin(cp.array), std::end(cp.array), std::begin(array));
-	return *this;
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
+    return 0;
 }
-
-template <class T>
-Array<T>::~Array() {}
