@@ -2,7 +2,7 @@
 NAME      		= megaphone
 
 CC          	= clang++
-CFLAGS      	= -Wall -Wextra -Werror -pedantic -std=c++98 -Wshadow -Wno-shadow
+CFLAGS      	= -Wall -Wextra -Werror -pedantic -std=c++98 -Wshadow
 # CFLAGS      	= -Wall -Wextra -Werror -Wuninitialized -O3
 
 SRCEXT      	= cpp
