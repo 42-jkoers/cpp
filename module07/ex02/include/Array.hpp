@@ -6,7 +6,7 @@
 template <typename T>
 class Array {
   public:
-	Array<T>() : array(NULL), n(0) {}
+	Array<T>() : array(NULL), n(0) {} // NO!
 	Array<T>(unsigned int n) : array(new T[n]), n(n) {}
 	Array<T>(const Array<T>& src) : n(src.size()) {
 		array = new T[src.size()];
@@ -24,7 +24,7 @@ class Array {
 	}
 
 	Array<T>& operator=(const Array<T>& src) {
-		if (n != 0)
+		if (n)
 			delete[] array;
 		array = new T[src.size()];
 		for (size_t i = 0; i < src.size(); i++)
@@ -35,8 +35,8 @@ class Array {
 
 	class OobException : public std::exception {
 	  public:
-		OobException() throw(){};
-		virtual ~OobException() throw(){};
+		// OobException() throw(){};
+		// virtual ~OobException() throw(){};
 		virtual const char* what() const throw() { return "Index out of bounce"; };
 	};
 
