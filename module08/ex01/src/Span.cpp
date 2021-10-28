@@ -1,5 +1,4 @@
-
-#include "Span.hpp"
+#include "span.hpp"
 #include <iostream>
 #include <iterator>
 
@@ -13,11 +12,11 @@ Span& Span::operator=(const Span& rhs) {
 	return *this;
 }
 
-void Span::addNumber(int n) {
-	if (array.size() < (unsigned int)n)
+void Span::addNumber(int _n) {
+	if (array.size() < (unsigned int)_n)
 		array.push_back(n);
 	else
-		throw Span::Full();
+		throw Span::FullException();
 	std::sort(array.begin(), array.end());
 }
 
@@ -25,12 +24,12 @@ long Span::shortestSpan() {
 	if (array.size() <= 1)
 		throw Span::TooShortToSpan();
 	int span = -1;
-	int buffer;
+	int i_copy;
 	for (std::vector<int>::iterator i = array.begin(); i < array.end(); i++) {
-		buffer = *i;
+		i_copy = *i;
 		i++;
-		if ((span == -1 || ((*i - buffer) < span)) && *i != 0)
-			span = *i - buffer;
+		if ((span == -1 || ((*i - i_copy) < span)) && *i)
+			span = *i - i_copy;
 	}
 	return (unsigned long)span;
 }
@@ -38,10 +37,8 @@ long Span::shortestSpan() {
 long Span::longestSpan() {
 	if (array.size() <= 1)
 		throw Span::TooShortToSpan();
-
-	std::vector<int>::iterator min = std::min_element(array.begin(), array.end());
-	std::vector<int>::iterator max = std::max_element(array.begin(), array.end());
-
-	long					   rtn = *min - *max;
+	const std::vector<int>::iterator	min = std::min_element(array.begin(), array.end());
+	const std::vector<int>::iterator	max = std::max_element(array.begin(), array.end());
+	const long							rtn = *min - *max;
 	return rtn < 0 ? -rtn : rtn;
 }

@@ -28,8 +28,6 @@ int main() {
 	std::cout << *rit << std::endl;
 	std::stack<int> s(mstack);
 
-	// Test for the List (same)
-
 	std::cout << "\n\nTest List (same)" << std::endl;
 
 	std::list<int> list;
