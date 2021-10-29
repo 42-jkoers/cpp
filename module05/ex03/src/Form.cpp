@@ -48,8 +48,8 @@ long		Form::getGradeExecute() const { return gradeExecute; }
 bool		Form::getIsSigned() const { return isSigned; }
 std::string Form::getTarget() const { return target; }
 
-void		Form::setIsSigned(bool isSigned) { this->isSigned = isSigned; }
-void		Form::setTarget(const std::string& target) { this->target = target; }
+void		Form::setIsSigned(bool _isSigned) { this->isSigned = _isSigned; }
+void		Form::setTarget(const std::string& _target) { this->target = _target; }
 
 //
 

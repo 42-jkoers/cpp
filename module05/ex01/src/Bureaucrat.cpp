@@ -4,12 +4,12 @@
 Bureaucrat::Bureaucrat() : name("no name"), grade(grade_min) {
 }
 
-void Bureaucrat::setGrade(long grade) {
-	if (grade < grade_min)
+void Bureaucrat::setGrade(long _grade) {
+	if (_grade < grade_min)
 		throw GradeTooHighException();
-	else if (grade > grade_max)
+	else if (_grade > grade_max)
 		throw GradeTooLowException();
-	this->grade = grade;
+	this->grade = _grade;
 }
 
 Bureaucrat::Bureaucrat(const std::string& name, long grade) : name(name) {
@@ -43,7 +43,7 @@ void Bureaucrat::decrementGrade() {
 	setGrade(grade + 1);
 }
 
-void Bureaucrat::signForm(const Form& f) const {
+void Bureaucrat::signForm(Form& f) const {
 	if (grade > f.getGradeSign())
 		std::cout << "Bureaucrat " << name << " cannot sign form " << f.getName() << " because grade is too low" << std::endl;
 	else

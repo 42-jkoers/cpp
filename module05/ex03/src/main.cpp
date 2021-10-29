@@ -37,6 +37,8 @@ int main() {
 				std::cerr << e.what() << std::endl;
 			}
 			delete form;
+		} else {
+			std::cout << "Form not found" << std::endl;
 		}
 	}
 

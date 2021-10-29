@@ -45,5 +45,13 @@ int main() {
 	}
 	std::cout << "\nNow executing as president" << std::endl;
 	robotomyRequestForm.execute(president);
+
+	{
+		std::cout << std::endl;
+		PresidentialPardonForm form("testForm");
+		Bureaucrat			   b("b", 1);
+		b.signForm(form);
+		b.executeForm(form);
+	}
 	return 0;
 }
