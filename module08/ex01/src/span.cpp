@@ -24,14 +24,14 @@ long Span::shortestSpan() {
 	if (array.size() <= 1)
 		throw Span::TooShortToSpan();
 	int span = -1;
-	int i_copy;
+	int buffer;
 	for (std::vector<int>::iterator i = array.begin(); i < array.end(); i++) {
-		i_copy = *i;
+		buffer = *i;
 		i++;
-		if ((span == -1 || ((*i - i_copy) < span)) && *i != 0)
-			span = *i - i_copy;
+		if ((span == -1 || ((*i - buffer) < span)) && *i != 0)
+			span = *i - buffer;
 	}
-	return (unsigned long)span;
+	return ((unsigned long)span);
 }
 
 long Span::longestSpan() {
