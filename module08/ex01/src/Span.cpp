@@ -28,10 +28,10 @@ long Span::shortestSpan() {
 	for (std::vector<int>::iterator i = array.begin(); i < array.end(); i++) {
 		i_copy = *i;
 		i++;
-		if ((span == -1 || ((*i - i_copy) < span)) && *i)
+		if ((span == -1 || ((*i - i_copy) < span)) && *i != 0)
 			span = *i - i_copy;
 	}
-	return span;
+	return (unsigned long)span;
 }
 
 long Span::longestSpan() {
