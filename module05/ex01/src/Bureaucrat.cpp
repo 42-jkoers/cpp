@@ -46,8 +46,11 @@ void Bureaucrat::decrementGrade() {
 void Bureaucrat::signForm(Form& f) const {
 	if (grade > f.getGradeSign())
 		std::cout << "Bureaucrat " << name << " cannot sign form " << f.getName() << " because grade is too low" << std::endl;
-	else
+	else {
+		Bureaucrat b("", 1);
+		f.beSigned(b);
 		std::cout << "Bureaucrat " << name << " signs form " << f.getName() << std::endl;
+	}
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& target) {
