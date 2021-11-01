@@ -13,10 +13,10 @@ Span& Span::operator=(const Span& rhs) {
 }
 
 void Span::addNumber(int _n) {
-	if (array.size() < (unsigned int)_n)
-		array.push_back(n);
-	else
+	if (array.size() + 1 > n)
 		throw Span::FullException();
+	else
+		array.push_back(_n);
 	std::sort(array.begin(), array.end());
 }
 
@@ -31,14 +31,13 @@ long Span::shortestSpan() {
 		if ((span == -1 || ((*i - i_copy) < span)) && *i)
 			span = *i - i_copy;
 	}
-	return (unsigned long)span;
+	return span;
 }
 
 long Span::longestSpan() {
 	if (array.size() <= 1)
 		throw Span::TooShortToSpan();
-	const std::vector<int>::iterator	min = std::min_element(array.begin(), array.end());
-	const std::vector<int>::iterator	max = std::max_element(array.begin(), array.end());
-	const long							rtn = *min - *max;
-	return rtn < 0 ? -rtn : rtn;
+	const std::vector<int>::iterator min = std::min_element(array.begin(), array.end());
+	const std::vector<int>::iterator max = std::max_element(array.begin(), array.end());
+	return std::abs(*min - *max);
 }

@@ -6,16 +6,12 @@
 
 class Span {
   public:
-	class NotEnoughSpace : public std::exception {
-		virtual const char* what() const throw() { return "Not enough space"; }
-	};
-
 	class FullException : public std::exception {
-		virtual const char* what() const throw() { return "Span is full"; }
+		virtual const char* what() const throw() { return "Error: span is full"; }
 	};
 
 	class TooShortToSpan : public std::exception {
-		virtual const char* what() const throw() { return "Span is too short"; }
+		virtual const char* what() const throw() { return "Error: span is too short"; }
 	};
 
 	template <class Iterator>
@@ -27,7 +23,7 @@ class Span {
 	}
 
 	Span(unsigned int n);
-	Span(Span const& src);
+	Span(const Span& src);
 	void addNumber(int n);
 	long shortestSpan();
 	long longestSpan();
