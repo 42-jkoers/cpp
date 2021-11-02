@@ -1,6 +1,4 @@
-#ifndef POINT_H
-#define POINT_H
-
+#pragma once
 #include "Fixed.hpp"
 
 class Point {
@@ -17,5 +15,3 @@ class Point {
 	float  getX() const;
 	float  getY() const;
 };
-
-#endif

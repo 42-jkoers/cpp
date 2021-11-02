@@ -3,15 +3,16 @@
 ClapTrap::ClapTrap() {}
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-	std::cout << "ClapTrap " << _name << " has entered the game" << std::endl;
+	std::cout << "Claptrap " << _name << " has received the gift of life" << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap " << _name << " has left the game" << std::endl;
+	std::cout << "Claptrap " << _name << " was obliterated" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& cp) {
 	*this = cp;
+	std::cout << "Claptrap " << _name << " has received the gift of life" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -20,16 +21,15 @@ void ClapTrap::attack(const std::string& target) {
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-	std::cout << "ClapTrap " << _name << " takes " << amount << " damage" << std::endl;
+	std::cout << "Claptrap " << _name << " received " << amount << " damage" << std::endl;
 	_hitPoints -= amount;
-	std::cout << "* ClapTrap " << _name << " has " << _hitPoints << " attackDamage *" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	std::cout << "ClapTrap " << _name << " is being repaired by " << amount << " hitpoints" << std::endl;
+	std::cout << "Claptrap " << _name << " recoverd " << amount << " HP" << std::endl;
 	_hitPoints -= amount;
 	_energyPoints -= amount;
-	std::cout << "* ClapTrap " << _name << " has " << _energyPoints << " energy left *" << std::endl;
+	std::cout << "ClapTrap " << _name << " has " << _energyPoints << " energypoints" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& original) {

@@ -3,7 +3,7 @@
 FragTrap::FragTrap() {
 	_hitPoints = 100;
 	_attackDamage = 30;
-	std::cout << "FragTrap " << this->_name << " has entered the game" << std::endl;
+	std::cout << "FragTrap " << _name << " has joined the realm of the living" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
@@ -11,11 +11,11 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	_hitPoints = 100;
 	_energyPoints = 100;
 	_attackDamage = 30;
-	std::cout << "FragTrap " << this->_name << " has entered the game" << std::endl;
+	std::cout << "FragTrap " << _name << " has joined the realm of the living" << std::endl;
 }
 
 FragTrap::~FragTrap() {
-	std::cout << "FragTrap " << this->_name << " has left the game" << std::endl;
+	std::cout << "FragTrap " << _name << " fell into the void" << std::endl;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& original) {
@@ -27,5 +27,5 @@ FragTrap& FragTrap::operator=(const FragTrap& original) {
 }
 
 void FragTrap::highFivesGuys() {
-	std::cout << "good work, high five?!" << std::endl;
+	std::cout << "FragTrap " << _name << " made a positive high five request" << std::endl;
 }

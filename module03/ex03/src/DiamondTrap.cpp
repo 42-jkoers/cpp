@@ -7,13 +7,11 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(), FragTra
 	std::cout << "DiamondTrap " << _name << " has entered the game" << std::endl;
 }
 
-DiamondTrap::~DiamondTrap(void) {
-	std::cout << "DiamondTrap " << _name << " has left the game" << std::endl;
+DiamondTrap::~DiamondTrap() {
+	std::cout << "DiamondTrap " << _name << " imploded" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& original) {
-	*this = original;
-}
+DiamondTrap::DiamondTrap(const DiamondTrap& original) { *this = original; }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& original) {
 	_attackDamage = original._attackDamage;
@@ -23,6 +21,6 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& original) {
 	return *this;
 }
 
-void DiamondTrap::whoAmI(void) {
+void DiamondTrap::whoAmI() {
 	std::cout << _name << std::endl;
 }

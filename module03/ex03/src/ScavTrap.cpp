@@ -1,8 +1,8 @@
 #include "../include/ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) {
+ScavTrap::ScavTrap() {
 	_energyPoints = 50;
-	std::cout << "ScavTrap " << _name << " has entered the game" << std::endl;
+	std::cout << "ScavTrap " << _name << " was brought into this world" << std::endl;
 	return;
 }
 
@@ -11,18 +11,16 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
-	std::cout << "ScavTrap " << _name << " has entered the game" << std::endl;
-	return;
+	std::cout << "ScavTrap " << _name << " was brought into this world" << std::endl;
 }
 
-ScavTrap::~ScavTrap(void) {
-	std::cout << "ScavTrap " << _name << " has left the game" << std::endl;
-	return;
+ScavTrap::~ScavTrap() {
+	std::cout << "Scavtrap " << _name << " was reduced to atoms" << std::endl;
 }
 
 void ScavTrap::attack(const std::string& target) {
-	std::cout << "ScavTrap " << _name << " attacks " << target;
-	std::cout << " causing " << _attackDamage << " amount of damage" << std::endl;
+	std::cout << "ScavTrap " << _name << " attacks " << target
+			  << " causing " << _attackDamage << " amount of damage" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& original) {
@@ -33,6 +31,6 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& original) {
 	return *this;
 }
 
-void ScavTrap::guardGate(void) {
+void ScavTrap::guardGate() {
 	std::cout << "ScavTrap " << _name << " has entered in gate keeper mode" << std::endl;
 }
