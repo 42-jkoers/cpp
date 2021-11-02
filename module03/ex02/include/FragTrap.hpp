@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 #include <cstdlib>
 #include <iostream>
 
-class FragTrap : public ScavTrap {
+class FragTrap : public ClapTrap {
   public:
 	FragTrap();
 	FragTrap(const std::string name);

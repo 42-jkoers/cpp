@@ -1,10 +1,10 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ScavTrap("Peanut", 100, 100, 30) {
+FragTrap::FragTrap() : ClapTrap("Peanut", 100, 100, 30) {
 	std::cout << "FragTrap " << name << " has joined the realm of the living" << std::endl;
 }
 
-FragTrap::FragTrap(const std::string name) : ScavTrap(name, 100, 100, 30) {
+FragTrap::FragTrap(const std::string name) : ClapTrap(name, 100, 100, 30) {
 	std::cout << "FragTrap " << name << " has joined the realm of the living" << std::endl;
 }
 
