@@ -1,39 +1,38 @@
-#include "ScavTrap.hpp"
+#include "../include/ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("Peanut", 100, 50, 20) {
-	std::cout << "ScavTrap " << name << " was brought into this world" << std::endl;
+ScavTrap::ScavTrap(void) {
+	_energyPoints = 50;
+	std::cout << "ScavTrap " << _name << " has entered the game" << std::endl;
+	return;
 }
 
-ScavTrap::ScavTrap(const std::string name) : ClapTrap(name, 100, 50, 20) {
-	std::cout << "ScavTrap " << name << " was brought into this world" << std::endl;
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
+	_name = name;
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 20;
+	std::cout << "ScavTrap " << _name << " has entered the game" << std::endl;
+	return;
 }
 
-ScavTrap::ScavTrap(std::string	name,
-				   unsigned int hitPoints,
-				   unsigned int energyPoints,
-				   unsigned int attackDamage) : ClapTrap(name, hitPoints, energyPoints, attackDamage) {
-	std::cout << "ScavTrap " << name << " was brought into this world" << std::endl;
+ScavTrap::~ScavTrap(void) {
+	std::cout << "ScavTrap " << _name << " has left the game" << std::endl;
+	return;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& cp) {
-	*this = cp;
-	std::cout << "ScavTrap " << name << " was brought into this world" << std::endl;
+void ScavTrap::attack(const std::string& target) {
+	std::cout << "ScavTrap " << _name << " attacks " << target;
+	std::cout << " causing " << _attackDamage << " amount of damage" << std::endl;
 }
 
-ScavTrap::~ScavTrap() {
-	std::cout << "Scavtrap " << name << " was reduced to atoms" << std::endl;
-}
-
-ScavTrap& ScavTrap::operator=(const ScavTrap& cp) {
-	hitPoints = cp.hitPoints;
-	energyPoints = cp.energyPoints;
-	attackDamage = cp.attackDamage;
-	initalHitPoints = cp.initalHitPoints;
-	initialEnergyPoints = cp.initialEnergyPoints;
-	initialAttackDamage = cp.initialAttackDamage;
+ScavTrap& ScavTrap::operator=(const ScavTrap& original) {
+	_attackDamage = original._attackDamage;
+	_hitPoints = original._hitPoints;
+	_energyPoints = original._energyPoints;
+	_name = original._name;
 	return *this;
 }
 
-void ScavTrap::guardGate() {
-	std::cout << "ScavTrap" << name << " has entered in gate keeper mode" << std::endl;
+void ScavTrap::guardGate(void) {
+	std::cout << "ScavTrap " << _name << " has entered in gate keeper mode" << std::endl;
 }

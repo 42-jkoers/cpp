@@ -27,5 +27,3 @@ class ClapTrap {
 	unsigned int energyPoints;
 	unsigned int attackDamage;
 };
-
-#endif

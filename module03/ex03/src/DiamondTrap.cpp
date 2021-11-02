@@ -1,17 +1,28 @@
-#include "DiamondTrap.hpp"
+#include "../include/DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : hitPoints(FragTrap::hitPoints),
-							 energyPoints(ScavTrap::energyPoints) {
+DiamondTrap::DiamondTrap() {}
+
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(), FragTrap() {
+	_name = name;
+	std::cout << "DiamondTrap " << _name << " has entered the game" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : diamondTrapName(name) {
+DiamondTrap::~DiamondTrap(void) {
+	std::cout << "DiamondTrap " << _name << " has left the game" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& cp) {
-	*this = cp;
+DiamondTrap::DiamondTrap(const DiamondTrap& original) {
+	*this = original;
 }
 
-DiamondTrap::~DiamondTrap() {}
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& original) {
+	_attackDamage = original._attackDamage;
+	_hitPoints = original._hitPoints;
+	_energyPoints = original._energyPoints;
+	_name = original._name;
+	return *this;
+}
 
-DiamondTrap& DiamondTrap::operator=(const DiamondTrap& cp) {
+void DiamondTrap::whoAmI(void) {
+	std::cout << _name << std::endl;
 }
