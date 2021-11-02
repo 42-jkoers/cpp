@@ -23,15 +23,17 @@ void Span::addNumber(int _n) {
 long Span::shortestSpan() {
 	if (array.size() <= 1)
 		throw Span::TooShortToSpan();
-	int span = -1;
-	int buffer;
+	long shortest = -1;
 	for (std::vector<int>::iterator i = array.begin(); i < array.end(); i++) {
-		buffer = *i;
-		i++;
-		if ((span == -1 || ((*i - buffer) < span)) && *i != 0)
-			span = *i - buffer;
+		for (std::vector<int>::iterator j = array.begin(); j < array.end(); j++) {
+			if (i == j)
+				continue;
+			long span = std::abs(*i - *j);
+			if (shortest == -1 || span < shortest)
+				shortest = span;
+		}
 	}
-	return ((unsigned long)span);
+	return shortest;
 }
 
 long Span::longestSpan() {
