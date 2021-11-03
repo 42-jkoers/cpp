@@ -1,8 +1,12 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("Peanut", 100, 50, 20) {}
+ScavTrap::ScavTrap() : ClapTrap("Peanut", 100, 50, 20) {
+	std::cout << "ScavTrap " << name << " was brought into this world " << hitPoints << " " << energyPoints << " " << attackDamage << std::endl;
+}
 
-ScavTrap::ScavTrap(const std::string name) : ClapTrap(name, 100, 50, 20) {}
+ScavTrap::ScavTrap(const std::string name) : ClapTrap(name, 100, 50, 20) {
+	std::cout << "ScavTrap " << name << " was brought into this world " << hitPoints << " " << energyPoints << " " << attackDamage << std::endl;
+}
 
 ScavTrap::ScavTrap(const ScavTrap& cp) {
 	*this = cp;
@@ -20,6 +24,9 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& cp) {
 	initialEnergyPoints = cp.initialEnergyPoints;
 	initialAttackDamage = cp.initialAttackDamage;
 	return *this;
+}
+void ScavTrap::attack(const std::string& target) {
+	std::cout << "ScavTrap " << name << " attacked " << target << " with " << attackDamage << " damage" << std::endl;
 }
 
 void ScavTrap::guardGate() {

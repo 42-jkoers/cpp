@@ -14,7 +14,7 @@ ClapTrap::ClapTrap() : name("Greg the almighty"),
 					   initalHitPoints(hitPoints),
 					   initialEnergyPoints(energyPoints),
 					   initialAttackDamage(attackDamage) {
-	std::cout << "Claptrap " << name << " has received the gift of life" << std::endl;
+	std::cout << "Claptrap " << name << " has received the gift of life " << hitPoints << " " << energyPoints << " " << attackDamage << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string name) : name(name),
@@ -24,7 +24,7 @@ ClapTrap::ClapTrap(const std::string name) : name(name),
 											 initalHitPoints(hitPoints),
 											 initialEnergyPoints(energyPoints),
 											 initialAttackDamage(attackDamage) {
-	std::cout << "Claptrap " << name << " has received the gift of life" << std::endl;
+	std::cout << "Claptrap " << name << " has received the gift of life " << hitPoints << " " << energyPoints << " " << attackDamage << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string	name,
@@ -37,12 +37,11 @@ ClapTrap::ClapTrap(std::string	name,
 												initalHitPoints(hitPoints),
 												initialEnergyPoints(energyPoints),
 												initialAttackDamage(attackDamage) {
-	std::cout << "Claptrap " << name << " has received the gift of life" << std::endl;
+	std::cout << "Claptrap " << name << " has received the gift of life " << hitPoints << " " << energyPoints << " " << attackDamage << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& src) {
 	*this = src;
-	std::cout << "Claptrap " << name << " has received the gift of life" << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
@@ -65,15 +64,10 @@ void ClapTrap::beRepaired(unsigned int amount) {
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-	(void)energyPoints;
-	(void)initialEnergyPoints;
 	std::cout << "Claptrap " << name << " received " << amount << " damage" << std::endl;
 	hitPoints -= max(hitPoints, amount);
 }
 
 void ClapTrap::attack(const std::string& target) {
-	(void)energyPoints;
-	(void)initialEnergyPoints;
-	(void)initialAttackDamage;
 	std::cout << "Claptrap " << name << " attacked " << target << " with " << attackDamage << " damage" << std::endl;
 }

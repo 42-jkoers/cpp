@@ -2,9 +2,8 @@
 
 int main() {
 	ScavTrap s;
-	ScavTrap s1("Greg");
-	ScavTrap s2 = s;
 
+	s.attack("air");
 	s.takeDamage(42);
 	s.guardGate();
 

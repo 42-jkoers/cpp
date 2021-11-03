@@ -1,11 +1,11 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap("Peanut", 100, 50, 20) {
-	std::cout << "ScavTrap " << name << " was brought into this world" << std::endl;
+	std::cout << "ScavTrap " << name << " was brought into this world " << hitPoints << " " << energyPoints << " " << attackDamage << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name, 100, 50, 20) {
-	std::cout << "ScavTrap " << name << " was brought into this world" << std::endl;
+	std::cout << "ScavTrap " << name << " was brought into this world " << hitPoints << " " << energyPoints << " " << attackDamage << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string	name,
@@ -17,7 +17,6 @@ ScavTrap::ScavTrap(std::string	name,
 
 ScavTrap::ScavTrap(const ScavTrap& cp) {
 	*this = cp;
-	std::cout << "ScavTrap " << name << " was brought into this world" << std::endl;
 }
 
 ScavTrap::~ScavTrap() {
@@ -33,7 +32,10 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& cp) {
 	initialAttackDamage = cp.initialAttackDamage;
 	return *this;
 }
+void ScavTrap::attack(const std::string& target) {
+	std::cout << "ScavTrap " << name << " attacked " << target << " with " << attackDamage << " damage" << std::endl;
+}
 
 void ScavTrap::guardGate() {
-	std::cout << "ScavTrap" << name << " has entered in gate keeper mode" << std::endl;
+	std::cout << "ScavTrap " << name << " has entered in gate keeper mode" << std::endl;
 }
