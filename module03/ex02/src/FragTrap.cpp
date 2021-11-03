@@ -27,6 +27,10 @@ FragTrap& FragTrap::operator=(const FragTrap& cp) {
 	return *this;
 }
 
-void FragTrap::highFiveGuys() {
+void FragTrap::attack(const std::string& target) {
+	std::cout << "FragTrap " << name << " attacked " << target << " with " << attackDamage << " damage" << std::endl;
+}
+
+void FragTrap::highFivesGuys() {
 	std::cout << "FragTrap " << name << " made a positive high five request" << std::endl;
 }

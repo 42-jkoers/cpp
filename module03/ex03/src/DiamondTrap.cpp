@@ -2,9 +2,9 @@
 
 DiamondTrap::DiamondTrap() {}
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(), FragTrap() {
 	_name = name;
-	std::cout << "DiamondTrap " << _name << " has entered the game" << std::endl;
+	std::cout << "DiamondTrap " << _name << " has entered the game " << _hitPoints << " " << _energyPoints << " " << _attackDamage << std::endl;
 }
 
 DiamondTrap::~DiamondTrap() {
@@ -22,5 +22,5 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& original) {
 }
 
 void DiamondTrap::whoAmI() {
-	std::cout << _name << std::endl;
+	std::cout << "name: " << _name << " clapname: " << ClapTrap::_name << std::endl;
 }
